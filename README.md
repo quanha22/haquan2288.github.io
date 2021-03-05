@@ -56,11 +56,3 @@ body{ background-color:#222; margin:0; padding:0;}
                 divMyGame.scrollIntoView();
             }
     </script>
-</body>
-</html>![Img1__0](https://user-images.githubusercontent.com/77852973/110065644-a5055800-7d3d-11eb-964a-4c574247ff6a.png)
-![Img1__1](https://user-images.githubusercontent.com/77852973/110065645-a59dee80-7d3d-11eb-9603-296a4bf0a08f.png)
-![Img1__2](https://user-images.githubusercontent.com/77852973/110065646-a59dee80-7d3d-11eb-9975-8fe6bd235e39.png)
-![Img1__3](https://user-images.githubusercontent.com/77852973/110065648-a59dee80-7d3d-11eb-9f4d-5632d83f4e7a.PNG)
-![Img1__4](https://user-images.githubusercontent.com/77852973/110065649-a59dee80-7d3d-11eb-8a14-8731db6bab30.png)
-![Img1__5](https://user-images.githubusercontent.com/77852973/110065650-a6368500-7d3d-11eb-9431-5bd8ff010527.PNG)
-
