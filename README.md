@@ -36,7 +36,7 @@ body{ background-color:#222; margin:0; padding:0;}
         </tr>
     </table>
 
-    <script type='text/javascript' src='EducationalSimulation.js?v=998'></script>
+    <script type='text/javascript' src='https://github.com/quanha22/quanha22.github.io/blob/main/EducationalSimulation.js'></script>
 
     <script>
             _Game.Start(divMyGame);
