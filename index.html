@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>EducationalSimulation</title>
-<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!---Header-->
+    <title>EducationalSimulation</title>
+    <meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-#divMyGame canvas:focus { outline: none;background-color: #000;}
-#divMyGame canvas { outline: none;background-color: #000;}
-.CssTable{background-color:#050505; text-align:center; width:100%; border: 1px solid teal; }
-.CssTable td{ border: 1px solid chartreuse; }
-.btn {background-color: #4CAF50; /* Green */border: none;color: white;padding: 16px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;transition-duration: 0.4s;cursor: pointer;}
-.btn1 {background-color: white; color: black; border: 2px solid #4CAF50;}
-.btn1:hover {background-color: #4CAF50;color: white;}
-.btn2 {background-color: white; color: black; border: 2px solid #008CBA;}
-.btn2:hover {background-color: #008CBA;color: white;}
-body{ background-color:#222; margin:0; padding:0;}
-</style>
-</head>
-<body>
+    <!---Background-->
+    <style>
+    #divMyGame canvas:focus { outline: none;background-color: #000;}
+    #divMyGame canvas { outline: none;background-color: #000;}
+    .CssTable{background-color:#050505; text-align:center; width:100%; border: 1px solid teal; }
+    .CssTable td{ border: 1px solid chartreuse; }
+    .btn {background-color: #4CAF50; /* Green */border: none;color: white;padding: 16px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;transition-duration: 0.4s;cursor: pointer;}
+    .btn1 {background-color: white; color: black; border: 2px solid #4CAF50;}
+    .btn1:hover {background-color: #4CAF50;color: white;}
+    .btn2 {background-color: white; color: black; border: 2px solid #008CBA;}
+    .btn2:hover {background-color: #008CBA;color: white;}
+    body{ background-color:#222; margin:0; padding:0;}
+    </style>
+    </head>
+
+    <!---Buttons-->
+    <body>
     <table class='CssTable'>
         <tr>
             <td>
@@ -35,28 +40,9 @@ body{ background-color:#222; margin:0; padding:0;}
         </tr>
     </table>
 
-    <script type='text/javascript'>
-    
-    function draw()
-  {
-var canvas = document.getElementById('circle');
-if (canvas.getContext)
-{
-var ctx = canvas.getContext('2d'); 
-var X = canvas.width / 2;
-var Y = canvas.height / 2;
-var R = 45;
-ctx.beginPath();
-ctx.arc(X, Y, R, 0, 2 * Math.PI, false);
-ctx.lineWidth = 3;
-ctx.strokeStyle = '#FF0000';
-ctx.stroke();
-}
-}
-    
-    </script>
+    <script src=Circle.js></script>
 
-    <script>
+    <!-- <script>
             _Game.Start(divMyGame);
             function _Full_Width() {
                 divMyGame.firstChild.style.width = "100%";
@@ -73,6 +59,6 @@ ctx.stroke();
                 divMyGame.firstChild.style.height = "";
                 divMyGame.scrollIntoView();
             }
-    </script>
+    </script> -->
 </body>
 </html>
