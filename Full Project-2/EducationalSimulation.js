@@ -1,3 +1,4 @@
+//until it gets ti the comment that states beginnig of game the rest is to code for the background and surrounding borders
 {class BuildImage
     {constructor(Key,Width,Height,Images_number,OriginX,OriginY,Mask_Type,Mask,MaskOnly)
         {this.Key=Key;this.Width=Width;this.Height=Height;this.Images_number=Images_number;this.OriginX=OriginX;this.OriginY=OriginY;var A=new Array();A[0]=null;if(!MaskOnly)
@@ -12,7 +13,7 @@
         }
         this.M=A;this.Mask_Type=Mask_Type;this.Mask=Masks.MaskToMatrix(Mask,Width);this.MaskOnly=MaskOnly;}};
         class BuildTimeLine{constructor(Key,Steps,Codes)
-            {
+            { //creating constants
                 this.Key=Key;
                 this.Steps=Steps;
                 this.Codes=Codes;}
@@ -27,7 +28,7 @@
                     this.EventDraw=EventDraw;this.Group=Group;
                 }
         };
-            class BuildRoom{constructor(Key,SnapX,SnapY,Width,Height,Speed,CanvasWidth,CanvasHeight,BackColor,Obj)
+            class BuildRoom{constructor(Key,SnapX,SnapY,Width,Height,Speed,CanvasWidth,CanvasHeight,BackColor,Obj) //creating the intereor that the game is beign held on as well as how fast the pixels appear
                 {this.Key=Key;this.SnapX=SnapX;this.SnapY=SnapY;this.Width=Width;this.Height=Height;this.Speed=Speed;this.CanvasWidth=CanvasWidth;this.CanvasHeight=CanvasHeight;this.BackColor=BackColor;this.Obj=Obj;}
             };
             const Masks={C:"123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",CharToNum(S)
@@ -51,9 +52,11 @@
             {if(null==a)return[null];else
                 {for(var c=[null],d=0,e=a.length;d<e;d++)c[d]=this.MaskToMatrix2(a[d],b);return c}}};
                 const t={F(){},
-                    Img:{Key:"",Width:0,Height:0,Images_number:0,OriginX:0,OriginY:0,A:[null]},TLS(vTL){this.T=vTL;this.index=0;this.loop=false;},TLS2(vTL,vI,vL)
+                    Img:{Key:"",Width:0,Height:0,Images_number:0,OriginX:0,OriginY:0,A:[null]},TLS(vTL)
+                    {this.T=vTL;this.index=0;this.loop=false;},TLS2(vTL,vI,vL)
                     {this.T=vTL;this.index=vI;this.loop=vL;},TLP(){this.T=null;this.index=-1;this.loop=false;},FK(a,r)
-                    {for(var b=0,l=r.length;b<l;b++)if(r[b].Key==a)return b;return-1},GK(a,r){for(var b=0,l=r.length;b<l;b++)if(r[b].Key==a)return r[b];return null}
+                    {for(var b=0,l=r.length;b<l;b++)if(r[b].Key==a)return b;return-1},GK(a,r)
+                    {for(var b=0,l=r.length;b<l;b++)if(r[b].Key==a)return r[b];return null}
                 };let Room=null,ObjecTarget={},ctx,ctxD;const FindImageByKey=function(a)
                 {return t.FK(a,Images)},FindObjectByKey=function(a){return t.FK(a,
                     Objects)},FindRoomByKey=function(a)
@@ -108,7 +111,7 @@
                             ctx.direction=this.Direction;
                             ctx.textBaseline=this.TextBaseline;
                         },
-                        ResetTextStyle()
+                        ResetTextStyle() //text
                         {this.Color="Black";
                         this.Font="serif";
                         this.FontSize="20px";
@@ -119,7 +122,7 @@
                     {ctx.fillStyle=this.Color;if(M!=null)ctx.fillText(T,X,Y,M);
                         else ctx.fillText(T,X,Y);}
                 };
-                const Mouse={IsOn:false,X:0,Y:0,Left:-1,
+                const Mouse={IsOn:false,X:0,Y:0,Left:-1, //controling what the movement of the mouse does
                     Right:-1,
                     Middle:-1,
                     PageX:0,
@@ -135,7 +138,19 @@
                         else if(e.type=="touchmove")
                         {mx=e.targetTouches[0].pageX;my=e.targetTouches[0].pageY;}mx-=window.pageXOffset;my-=window.pageYOffset;}
                         if(!sys.IsFullscreen())
-                    {X=Math.floor((mx-s.left)*Room.CanvasWidth/s.width);Y=Math.floor((my-s.top)*Room.CanvasHeight/s.height);}else{var w=s.width/Room.CanvasWidth,h=s.height/Room.CanvasHeight;if(h>w){X=Math.floor(Room.CanvasWidth/s.width*mx);Y=Math.floor((my-(s.height-(Room.CanvasHeight*w))/2)/w);}else{X=Math.floor((mx-(s.width-(Room.CanvasWidth*h))/2)/h);Y=Math.floor(Room.CanvasHeight/s.height*my);}}if(X!=null&&Y!=null){this.X=X;this.Y=Y;}this.PageX=Math.floor(mx);this.PageY=Math.floor(my);},Down(k){return this[k]==1;},Up(k){return this[k]==0;},Press(k){return this[k]>0;},funcKeyPress(){if(this.Left>0)this.Left=2;else this.Left=-1;if(this.Right>0)this.Right=2;else this.Right=-1;this.Middle=-1;this.MoveEvent=this.ClickEvent=this.TouchEvent=null;this.WheelY=0;},Reset(){this.Left=this.Right=-1;this.funcKeyPress();},MouseClick(e){this.ClickEvent=e;var evt=e.type,s="Left";switch(e.which){case 1:s="Left";break;case 2:s="Middle";break;case 3:s="Right";break;default:return;}if(s=="Middle"){this[s]=1;}else{if(evt=='mousedown'){this[s+"Click"]=this[s]=1;}else{this[s+"Up"]=this[s]=0;}}},MouseWheel(e){this.WheelY=e.deltaY;},TouchClick(){this.TouchEvent=event;if(event.type=="touchstart")this["Left"]=1;},Square(a,b,c,d)
+                    {X=Math.floor((mx-s.left)*Room.CanvasWidth/s.width);Y=Math.floor((my-s.top)*Room.CanvasHeight/s.height);}
+                    else{var w=s.width/Room.CanvasWidth,h=s.height/Room.CanvasHeight;if(h>w){X=Math.floor(Room.CanvasWidth/s.width*mx);
+                        Y=Math.floor((my-(s.height-(Room.CanvasHeight*w))/2)/w);}
+                        else{X=Math.floor((mx-(s.width-(Room.CanvasWidth*h))/2)/h);Y=Math.floor(Room.CanvasHeight/s.height*my);}}
+                        if(X!=null&&Y!=null){this.X=X;this.Y=Y;}this.PageX=Math.floor(mx);this.PageY=Math.floor(my);},Down(k){return this[k]==1;},Up(k)
+                    {return this[k]==0;},Press(k){return this[k]>0;},funcKeyPress()
+                    {if(this.Left>0)this.Left=2;else this.Left=-1;if(this.Right>0)this.Right=2;else this.Right=-1;this.Middle=-1;
+                        this.MoveEvent=this.ClickEvent=this.TouchEvent=null;this.WheelY=0;},Reset()
+                        {this.Left=this.Right=-1;this.funcKeyPress();},
+                    MouseClick(e){this.ClickEvent=e;var evt=e.type,s="Left";switch(e.which){case 1:s="Left";break;case 2:s="Middle";break;case 3:s="Right";break;default:return;}
+                    if(s=="Middle"){this[s]=1;}else{if(evt=='mousedown'){this[s+"Click"]=this[s]=1;}
+                    else{this[s+"Up"]=this[s]=0;}}},MouseWheel(e){this.WheelY=e.deltaY;},TouchClick()
+                    {this.TouchEvent=event;if(event.type=="touchstart")this["Left"]=1;},Square(a,b,c,d)
                     {return this.X>=a&&this.X<c&&this.Y>=b&&this.Y<d},Square2(a,b,c,d)
                     {return this.X>=a&&this.X<a+c&&this.Y>=b&&this.Y<b+d}
                 };
@@ -144,7 +159,7 @@
                         {A[i]=CreateObject2(o[i].Key,o[i].X,o[i].Y);if(this.RS)return;}
                         return A;
                     },
-                    ObjectFunction:
+                    ObjectFunction: 
                     {Inherit(O){for(var a=Object.getOwnPropertyNames(this),i=1,l=a.length;i<l;i++)O[a[i]]=this[a[i]]}},
                     canvas:document.createElement("canvas"),canvasDraw:document.createElement("canvas"),
                     RS:false,
@@ -243,8 +258,9 @@
                         {Mouse.MouseWheel(event)},!1);
                         this.canvasDraw.tabIndex=1;
                         ctx=this.canvas.getContext("2d");
-                        ctxD=this.canvasDraw.getContext("2d");this.canvas.id="_MyGame";
-                        ctx.imageSmoothingEnabled=ctx_S;ctxD.imageSmoothingEnabled=ctxD_S;vElemMyGame.innerHTML="";
+                        ctxD=this.canvasDraw.getContext("2d");this.canvas.id="_MyGame"; //connects to the HTML
+                        ctx.imageSmoothingEnabled=ctx_S;ctxD.imageSmoothingEnabled=ctxD_S;
+                        vElemMyGame.innerHTML="";
                         vElemMyGame.appendChild(this.canvasDraw);
                         var vObj=this.LoadRoomObject();
                         if(vObj==null)return;Room.Obj=vObj;
@@ -261,26 +277,30 @@
                             if(!b)break;}
                             clearInterval(l);if(b)
                             {sys.IsGameReady=1;sys.StartGame(sys.PElem);return;}sys.
-                            LoadAll();},100);},UpdateGameArea1(){if(this.IsStarting)var a=setInterval(function()
-                                {sys.UpdateGameArea(sys);clearInterval(a);sys.UpdateGameArea1();},Room.Speed);},UpdateGameArea(s)
+                            LoadAll();},100//number of starting birds 
+                            );},UpdateGameArea1(){if(this.IsStarting)var a=setInterval(function() //begining loading of game
+                                {sys.UpdateGameArea(sys);
+                                    clearInterval(a);sys.UpdateGameArea1();
+                                },
+                                Room.Speed);
+                            },UpdateGameArea(s)
                             {try{s.clear();s.RS=false;var vImg,i,j,T,O=Room.Obj,lenO=O.length,lenT=0;var vDrawFirst=[];for(i=0;i<lenO;i++)
                                 {vDrawFirst[i]={vI:i,Depth:O[i].Depth};}vDrawFirst.sort
                                 (function(a,b)
                         {return b.Depth-a.Depth});for(i=0;i<lenO+lenT;i++)
                         {var o=O
                             [vDrawFirst[i].vI];if(o.IsDeleted||!o.Visible)continue;
-                            ObjecTarget=o;o.EventDraw();if(s.RS)return;if(o.IsDeleted)
+                            ObjecTarget=o;o.EventDraw();if(s.RS)return;if(o.IsDeleted) //If the slider is slide back the bird image will rplace it
                             continue;if(o.Img.Images_number>0&&o.ImageSpeed>0){o.ImgStep=
                                 (o.
                             ImgStep+1.0*o.ImageSpeed)%o.Img.Images_number;o.
                             ImageIndex=Math.
                             floor(o.ImgStep);}}s.clearDraw();ctxD.drawImage(s.canvas,0,0,
                                 s.
-                            canvas.width,s.canvas.height);for(i=0;i<O.length;)O[i].
-                            IsDeleted?
+                            canvas.width,s.canvas.height);for(i=0;i<O.length;)O[i].IsDeleted?
                         O.splice(i,1):i++;Mouse.funcKeyPress();
                         vDrawFirst=O=lenO=vImg=O=null;s.InGameStart=false;}catch{}},
-                        openFullscreen()
+                        openFullscreen() //fullscreen controls (however the fulscreen is ugly works better in normal)
                         {if(allowFS==3)return;var a=this.canvasDraw;a.requestFullscreen?
                             a.requestFullscreen():a.mozRequestFullScreen?a.
                             mozRequestFullScreen():a.webkitRequestFullscreen?a.
@@ -321,12 +341,13 @@ for(i=0; i < 10; i++){
         Draw.Image(Img1,T[i][j],x+40*i,y+40*j);
     }
 }
-ctx.globalAlpha = 1;
+ctx.globalAlpha = 1; //creating the positions of the slides
 G.DrawSlide(480,50,G.pollution,"pollution",1);
 G.DrawSlide(480,110,G.human,"human",2);
 G.DrawSlide(480,170,G.food,"food",3);
 G.DrawSlide(480,230,G.buildings,"buildings",4);
-Draw.Text(480,270,"Birds: ( "+G.bird+" / "+(G.bird-bb-bg)+" )");
+//counter of the color of birds
+Draw.Text(480,270,"Birds: ( "+G.bird+" / "+(G.bird-bb-bg)+" )"); 
 Draw.Text(480,290,"Brown: ( "+G.bird1+" / "+(G.bird1-bb)+" )");
 Draw.Text(480,310,"Gray: ( "+G.bird2+" / "+(G.bird2-bg)+" )");
 
@@ -362,8 +383,8 @@ Room1 = new BuildRoom("Room1",32,32,680,480,30,680,480,'#E8E9EC',
 Images=[Img1],
 Objects=[Object1],
 Rooms=[Room1];
-var G = { bird:100,bird1:100,bird2:0,pollution:0,human:0,food:0,buildings:0,mlf:"",GTime:20
-    ,Num:{pollution:2,human:3,food:5,buildings:4},Num2:[0,2,3,5,4],color:["black","red","blue","green","purple"]
+var G = { bird:100,bird1:100,bird2:0,pollution:0,human:0,food:0,buildings:0,mlf:"",GTime:20 //the graph
+    ,Num:{pollution:2,human:3,food:5,buildings:4},Num2:[0,2,3,5,4],color:["black","red","blue","green","purple"] //color of the graphs
     ,Start(){
         var T = [],time = [],T2 = [],i,j;
         for(i=0; i < 10; i++){
@@ -373,12 +394,12 @@ var G = { bird:100,bird1:100,bird2:0,pollution:0,human:0,food:0,buildings:0,mlf:
             }
             T2[i] = [100,0,0,0,0];
         }
-        this.T         = T; this.time = time; this.T2 = T2; this.GTime = 20;
-        this.bird      = this.bird1 = 100; this.bird2 = 0;
-        this.pollution = this.human = this.food = this.buildings = 0;
+        this.T         = T; this.time = time; this.T2 = T2; this.GTime = 20; 
+        this.bird      = this.bird1 = 100; this.bird2 = 0; //the beginning of the birds for the graph
+        this.pollution = this.human = this.food = this.buildings = 0; //the beginning of the other pollutants for the graph
     }
     ,DrawSlide(x,y,n,txt,i){
-        if((Mouse.Square2(x,y,156,30) && Mouse.Down("Left")) || this.mlf == txt){
+        if((Mouse.Square2(x,y,156,30) && Mouse.Down("Left")) || this.mlf == txt){ //determining the range number of the slides
             n = Math.floor((Mouse.X-x)/6);
             if(n > 25) n = 25; if(n < 0) n = 0;
             var n1 = this[txt] - n;
@@ -390,7 +411,7 @@ var G = { bird:100,bird1:100,bird2:0,pollution:0,human:0,food:0,buildings:0,mlf:
         ctx.fillStyle = "black"; Draw.Square(x,y+2,156,26); Draw.Text(x+160,y+4,n);
         ctx.fillStyle = "red"; Draw.Square(x+n*6,y,6,30); ctx.fillStyle = this.color[i]; ctx.fillText(txt,x,y-21);// Draw.Text(x,y-21,txt);
     }
-    ,ReDraw(n,txt){
+    ,ReDraw(n,txt){ //when the icons show up they show up randomly there is no pixels that is to replace them
         var n1 = this.Num[txt],x,y;
         if(n == 0) return;
         else if(n < 0){
@@ -414,7 +435,7 @@ var G = { bird:100,bird1:100,bird2:0,pollution:0,human:0,food:0,buildings:0,mlf:
                 }
             }while(n != 0);
         }
-        //////////
+        ////////// when the slider is slid back the birds begin to replace the other icons
         var cnt = 0;
         for(i=0; i < 10; i++){
             for(j=0; j < 10; j++){
@@ -437,4 +458,5 @@ var G = { bird:100,bird1:100,bird2:0,pollution:0,human:0,food:0,buildings:0,mlf:
         this.T2.shift();
         this.T2.push([this.bird,this.pollution,this.human,this.food,this.buildings]);
     }
+};}
 };}
